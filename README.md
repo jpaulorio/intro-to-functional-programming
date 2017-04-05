@@ -1,12 +1,12 @@
-#Functional Programming
+# Functional Programming
 
 ![Alt](evolution.png "Evolution")
 
-##Benefits
+## Benefits
 
-###Simplicity and Legibility
+### Simplicity and Legibility
 
-####With Boilerplate
+#### With Boilerplate
 
 ```javascript
 var things = [1, 2, 3, 4];
@@ -16,14 +16,14 @@ for (var i = 0; i < things.length; ++i) {
 console.log(things);
 ```
 
-####No Boilerplate
+#### No Boilerplate
 
 ```scala
 var things = [1, 2, 3, 4];
 var newThings = map(v => v * 10, things);
 ```
 
-####With Boilerplate
+#### With Boilerplate
 
 ```java
 interface Calc {
@@ -45,7 +45,7 @@ Calc mult = new CalcMult()
 int result = mult.operation(1,2)
 ```
 
-####No Boilerplate
+#### No Boilerplate
 
 ```scala
 object Calc {
@@ -59,7 +59,7 @@ val result = Calc.calc(1,3,(_+_))
 val result = Calc.calc(1,3,(_*_))
 ```
 
-###Composibility
+### Composibility
 
 ```scala
 def twofold(n:Int) = {n * 2}
@@ -71,7 +71,7 @@ val sixfold = twofold _ compose threefold _
 sixfold(2)
 ```
 
-###Debugability
+### Debugability
 
 ```java
 int rt(int x)
@@ -94,15 +94,15 @@ This is hard to reason about: ```rq(6) = ???```
 
 What about ```rq(x) + rq(y) * (rq(x) - rq(x))``` ?
 
-###Quality and Robustness
+### Quality and Robustness
 
 Immutability, legibility, simplicity and debugability makes the code less errorprone and easier to test.
 
-###Concurrency and Parallelism
+### Concurrency and Parallelism
 
 Immutability along with Futures and Promises help avoiding common concurrency issues like race conditions and deadlocks.
 
-###Higher Level Abstractions
+### Higher Level Abstractions
 
 Functional Programming pushes us towards thinking in terms of higher level abstractions, i.e., extract common behaviour duplicated throughout the code into higher level functions.
 
@@ -112,13 +112,13 @@ The most common functional abstractions are:
 * flatMap ```(1 to 5).flatMap(1 to _)``` =  Vector(1, 1, 2, 1, 2, 3, 1, 2, 3, 4, 1, 2, 3, 4, 5)
 * reduce ```(1 to 5).reduce(_+_)``` = 15
 
-##Basic Concepts
+## Basic Concepts
 
-###REPL
+### REPL
 
 REPL stands for read, eval, print, loop. Most functional programming languages provide a REPL which can be used for rapid experimentation and prototyping.
 
-###Anonymous Functions
+### Anonymous Functions
 
 Anonymous functions help increasing legibility by reducing the need for boilerplate code.
 
@@ -129,7 +129,7 @@ Anonymous functions help increasing legibility by reducing the need for boilerpl
 (1 to 5).map((x) => x + 1)
 ```
 
-###Currying and Partial Function Application
+### Currying and Partial Function Application
 
 Currying is a method of producing a chain of functions from a function with multiple arguments. The arguments of the original function will be split into the new generated functions.
 
@@ -175,7 +175,7 @@ val inc = add(1, _: Int)
 val res = inc(0) //returns 1
 ```
 
-###Pure Functions and Side Effects
+### Pure Functions and Side Effects
 
 Pure functions are functions:
 
@@ -204,7 +204,7 @@ def incrementAge(age:Int, years:Int) = {
 
 Reading from the keyboard and writing to a display are considered side effects. The same applies for http requests and any other kind of I/O operation.
 
-###Functions as First Class Citizens
+### Functions as First Class Citizens
 
 Functions are called first class citizens when the language they are implemented allows them to be assigned to variables or stored in data structures.
 
@@ -215,7 +215,7 @@ f(2,3)
 val functionList = List((x:Int, y:Int) => x * y)
 ```
 
-###Higher Order Functions
+### Higher Order Functions
 
 Higher order functions are functions that receive other functions as parameters and/or return other functions as results.
 
@@ -238,7 +238,7 @@ doOperation("Sum")(1,2)
 doOperation("Mul")(1,2)
 ```
 
-###Immutability
+### Immutability
 
 Immutability means that once a variable is assigned with a value of a given type, its value will never change. This is true for both scalar types and other data structures like sequences, sets and maps.
 
@@ -246,7 +246,7 @@ Instead of changing the value of a variable in-place, expressions using immutabl
 
 Simple duplicating data structures like lists or vectors, could incurr in memory issues like stack overflow. To overcome this kind of issues, techniques like persistent data structures, which reuse part of the original data structures, are used.
 
-###Closures
+### Closures
 
 A closure is a function together with a referencing environment for the non-local variables of that function. A closure allows a function to access variables outside its immediate lexical scope.
 
@@ -268,7 +268,7 @@ val belowFirst  =  (xs : List[Int])  =>  {
 belowFirst( List( 5, 1, 7, 4, 9, 11, 3 ) ) // => List( 1, 4, 3 )
 ```
 
-###Recursion
+### Recursion
 
 Recursion is the functional alternative to for loops. Depending on the implementation, recursion can be more efficient than traditional loops.
 
@@ -281,7 +281,7 @@ def factorial(n: Int): Int = {
 }
 ```
 
-###Lazy Sequences
+### Lazy Sequences
 
 Lazy sequences are sequences whose items are evaluated on demand. It allows us to work with very large sequences and even infinite sequences without raising stack overflow errors.
 
@@ -297,7 +297,7 @@ def factorial: Stream[BigInt] = {
 }
 ```
 
-###Functional Abstractions
+### Functional Abstractions
 
 * Map - Consists in creating a new sequence by applying a function to each item from the original sequence.
 
@@ -323,9 +323,9 @@ def factorial: Stream[BigInt] = {
 (1 to 10).reduce(_+_)
 ```
 
-##Advanced Concepts
+## Advanced Concepts
 
-###Tail Recursion
+### Tail Recursion
 
 In order for a recursive call to be tail recursive, the call back to the function must be the last action performed in the function.
 
@@ -351,7 +351,7 @@ def factorial(accumulator: Int, number: Int) : Int = {
 }
 ```
 
-###Pattern Matching
+### Pattern Matching
 
 Pattern matching is a very powerful feature which allows code to be written in a more elegant manner, specially when using concomitantly with recursion.
 
@@ -371,7 +371,7 @@ def foldLeft[A, B](l: List[A], z: B)(f: (B, A) => B): B = l match {
 }
 ```
 
-###Algebraic Data Types
+### Algebraic Data Types
 
 An algebraic data type is a kind of composite type, i.e., a type formed by combining other types.
 
@@ -414,11 +414,11 @@ res1: String = Hi Steve.
 
 Lists are also an algebraic data type of the type sum type. That's why we can use pattern matching to destructure a list by using its constructors :: (Cons) and Nil.
 
-###Monoids and Monads
+### Monoids and Monads
 
-####Monoids
+#### Monoids
 
-#####Definition
+##### Definition
 
 A monoid is "a bunch of things" and "some way of combining them".
 
@@ -433,7 +433,7 @@ To be considered a monoid, the combining operation must met the following rules:
 2. Rule 2 (Associativity): When combining more than two things, which pairwise combination you do first doesn't matter. Ex: (1 + 2) + 3 = 1 + (2 + 3)
 3. Rule 3 (Identity element): There is a special thing called "zero" such that when you combine any thing with "zero" you get the original thing back. Ex: 3 * 1 = 3 or "test" + "" = "test"
 
-#####Benefits
+##### Benefits
 
 1. Closure: The closure rule has the benefit that you can convert pairwise operations into operations that work on lists or sequences. In other words, if we can define a pairwise operation, we can extend it to list operations "for free".
 
@@ -460,15 +460,15 @@ You can see that reduce can be thought of as inserting the specified operation b
 
 In all cases we need a "zero" value. This allows us to say, for example, that the sum of an empty list is 0.
 
-#####Conclusion
+##### Conclusion
 
 It's important to understand that it's possible to create our own monoidic types for real life entities like Orders, Customers, Products and so on.
 
 By doing that, we can leverage the builtin operations that already know how to work with monoids. From just simplifying our code to enabling parallelism, monoids are a powerful feature of functional programming languages.
 
-####Monads
+#### Monads
 
-#####Definition
+##### Definition
 
 One can think about monads **like** being:
 
@@ -504,7 +504,7 @@ For completeness, it's necessary to mention that in order to be considered a mon
 * associativity law: ```m.flatMap(f).flatMap(g) == m.flatMap(x ⇒ f(x).flatMap(g))```
 
 
-#####Benefits
+##### Benefits
 
 Monads help avoiding boilerplate code and also enables composition by removing the need for things like null checks and exception handling.
 
@@ -596,22 +596,22 @@ val result =
     logResult      <- purchasingService.logPurchase(purchaseResult)
   } yield logResult
 ```
-#####Conclusion
+##### Conclusion
 
 Monads with its two operations, unit and flatMap, is a pretty powerful feature. Forget entangled if-branches, nested loops with their off-by-one errors and the callback hell. Monads enable you to write simpler and cleaner code, which often leads to less bugs in production.
 
 Just like monoids, beyond using the existing monads, we can create our own in order to make our codebase simpler and more elegant.
 
-##Examples
+## Examples
 
-###Monads - Options and Lists
+### Monads - Options and Lists
 
 * Scala
 * Haskell
 * Clojure
 * Swift
 
-###Concurrency and Parallelism - Futures and Promises
+### Concurrency and Parallelism - Futures and Promises
 
 * Scala
 * Haskell
